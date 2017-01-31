@@ -47,12 +47,12 @@ class slapanswer(znc.Module):
         self.nv['answers'] = json.dumps(self.ANSWERS)
 
     def command_help(self):
-        self.PutModule('add <msg> | add a msg (replace nick with {nick})')
-        self.PutModule(
-            'remove <id> | remove msg with id <id> (get id\'s with "list")'
-        )
-        self.PutModule('reset | reset msgs to default')
-        self.PutModule('list | get a list with msgs')
+        self.PutModule('\n'.join([
+            'add <msg> | add a msg (replace nick with {nick})',
+            'remove <id> | remove msg with id <id> (get id\'s with "list")',
+            'reset | reset msgs to default',
+            'list | get a list with msgs'
+        ]))
         return True
 
     def command_add(self, args):
