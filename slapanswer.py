@@ -10,11 +10,15 @@ class slapanswer(znc.Module):
     def OnLoad(self, args, message):
         self.default_answers = [
             '"Be kind whenever possible. It is always possible." - Dalai Lama',
-            '"Where ignorance is our master, there is no possibility of real peace." - Dalai Lama',
-            '"We can never obtain peace in the outer world until we make peace with ourselves." - Dalai Lama',
-            '"An eye for an eye will only make the whole world blind." - Mahatma Gandhi',
+            '"Where ignorance is our master, there is no possibility of real'
+            ' peace." - Dalai Lama',
+            '"We can never obtain peace in the outer world until we make peace'
+            ' with ourselves." - Dalai Lama',
+            '"An eye for an eye will only make the whole world blind."'
+            ' - Mahatma Gandhi',
             '"The best fighter is never angry" - Lao Tzu',
-            '"Peace cannot be achieved through violence, it can only be attained through understanding." - Ralph Waldo Emerson',
+            '"Peace cannot be achieved through violence, it can only be'
+            ' attained through understanding." - Ralph Waldo Emerson',
             '"Silence is sometimes the best answer" - Dalai Lama',
         ]
         if 'answers' in self.nv:
@@ -44,7 +48,9 @@ class slapanswer(znc.Module):
 
     def command_help(self):
         self.PutModule('add <msg> | add a msg (replace nick with {nick})')
-        self.PutModule('remove <id> | remove msg with id <id> (get id\'s with "list")')
+        self.PutModule(
+            'remove <id> | remove msg with id <id> (get id\'s with "list")'
+        )
         self.PutModule('reset | reset msgs to default')
         self.PutModule('list | get a list with msgs')
         return True
@@ -69,7 +75,9 @@ class slapanswer(znc.Module):
             self.save_answers()
             self.PutModule('Successfully removed answer!')
         else:
-            self.PutModule('ERROR: Invalid ID! Try "list" for a list of id\'s!')
+            self.PutModule(
+                'ERROR: Invalid ID! Try "list" for a list of id\'s!'
+            )
         return True
 
     def command_reset(self):
@@ -99,4 +107,5 @@ class slapanswer(znc.Module):
             msg = msg.format(nick=nick)
         msg = 'PRIVMSG {channel} :{msg}'.format(channel=channel, msg=msg)
         self.GetNetwork().PutIRC(msg)
-        self.GetNetwork().PutUser(':{own_host} {msg}'.format(own_host=own_host, msg=msg))
+        self.GetNetwork().PutUser(':{own_host} {msg}'.format(
+            own_host=own_host, msg=msg))
